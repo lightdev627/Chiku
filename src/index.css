@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Dark Mode - Midnight Abyss */
+  :root {
+    --background: 240 20% 3%;
+    --foreground: 0 0% 100%;
+
+    --card: 240 18% 7%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 18% 7%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 280 70% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 320 65% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 240 12% 12%;
+    --muted-foreground: 240 8% 55%;
+
+    --accent: 45 90% 55%;
+    --accent-foreground: 240 20% 3%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 210 15% 95%;
+
+    --border: 240 12% 12%;
+    --input: 240 12% 10%;
+    --ring: 280 70% 60%;
+
+    --radius: 1rem;
+
+    /* Custom design tokens - Midnight Abyss */
+    --gradient-primary: linear-gradient(135deg, hsl(280 70% 60%), hsl(320 65% 55%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 90% 55%), hsl(35 85% 50%));
+    --gradient-bg: linear-gradient(180deg, hsl(240 20% 3%), hsl(260 25% 5%));
+    
+    --shadow-glow: 0 0 40px hsl(280 70% 60% / 0.25);
+    --shadow-soft: 0 8px 32px hsl(0 0% 0% / 0.6);
+    --shadow-neon: 0 0 25px hsl(280 70% 60% / 0.4), 0 0 50px hsl(320 65% 55% / 0.2);
+
+    --glass-bg: hsl(240 18% 7% / 0.8);
+    --glass-border: hsl(280 70% 60% / 0.15);
+  }
+
+  /* Light Mode - Sakura Bloom */
+  .light {
+    --background: 350 30% 98%;
+    --foreground: 350 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 350 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 350 25% 15%;
+
+    --primary: 350 70% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 280 55% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 350 15% 93%;
+    --muted-foreground: 350 10% 45%;
+
+    --accent: 160 60% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 350 15% 90%;
+    --input: 350 15% 96%;
+    --ring: 350 70% 55%;
+
+    /* Custom design tokens - Sakura Bloom */
+    --gradient-primary: linear-gradient(135deg, hsl(350 70% 55%), hsl(280 55% 55%));
+    --gradient-accent: linear-gradient(135deg, hsl(160 60% 40%), hsl(180 50% 45%));
+    --gradient-bg: linear-gradient(180deg, hsl(350 30% 98%), hsl(340 25% 96%));
+    
+    --shadow-glow: 0 0 30px hsl(350 70% 55% / 0.2);
+    --shadow-soft: 0 8px 32px hsl(350 25% 15% / 0.08);
+    --shadow-neon: 0 4px 20px hsl(350 70% 55% / 0.25);
+
+    --glass-bg: hsl(0 0% 100% / 0.9);
+    --glass-border: hsl(350 70% 55% / 0.12);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background: var(--gradient-bg);
+    min-height: 100vh;
+  }
+
+  /* Dark mode prose styling for AI responses */
+  :root .prose {
+    --tw-prose-body: hsl(0 0% 100%);
+    --tw-prose-headings: hsl(0 0% 100%);
+    --tw-prose-lead: hsl(0 0% 100%);
+    --tw-prose-links: hsl(280 70% 60%);
+    --tw-prose-bold: hsl(0 0% 100%);
+    --tw-prose-counters: hsl(0 0% 85%);
+    --tw-prose-bullets: hsl(0 0% 85%);
+    --tw-prose-hr: hsl(240 12% 12%);
+    --tw-prose-quotes: hsl(0 0% 100%);
+    --tw-prose-quote-borders: hsl(280 70% 60%);
+    --tw-prose-captions: hsl(0 0% 85%);
+    --tw-prose-code: hsl(0 0% 100%);
+    --tw-prose-pre-code: hsl(0 0% 100%);
+    --tw-prose-pre-bg: hsl(240 18% 10%);
+    --tw-prose-th-borders: hsl(240 12% 20%);
+    --tw-prose-td-borders: hsl(240 12% 15%);
+  }
+
+  .light .prose {
+    --tw-prose-body: hsl(350 25% 15%);
+    --tw-prose-headings: hsl(350 25% 15%);
+    --tw-prose-lead: hsl(350 25% 15%);
+    --tw-prose-links: hsl(350 70% 55%);
+    --tw-prose-bold: hsl(350 25% 15%);
+    --tw-prose-counters: hsl(350 10% 45%);
+    --tw-prose-bullets: hsl(350 10% 45%);
+    --tw-prose-hr: hsl(350 15% 90%);
+    --tw-prose-quotes: hsl(350 25% 15%);
+    --tw-prose-quote-borders: hsl(350 70% 55%);
+    --tw-prose-captions: hsl(350 10% 45%);
+    --tw-prose-code: hsl(350 25% 15%);
+    --tw-prose-pre-code: hsl(0 0% 100%);
+    --tw-prose-pre-bg: hsl(350 15% 93%);
+    --tw-prose-th-borders: hsl(350 15% 85%);
+    --tw-prose-td-borders: hsl(350 15% 90%);
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .glass-strong {
+    background: hsl(var(--card) / 0.85);
+    backdrop-filter: blur(30px);
+    border: 1px solid var(--glass-border);
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-neon {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.4s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 2px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+
+  /* Unique Send Button */
+  .send-button {
+    background: var(--gradient-primary);
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-glow);
+  }
+
+  .send-button:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-neon);
+  }
+
+  .send-button:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+
+  /* Overlay animations */
+  .overlay-backdrop {
+    backdrop-filter: blur(12px);
+    background: hsl(var(--background) / 0.4);
+    animation: overlay-fade-in 0.25s ease-out forwards;
+  }
+
+  .overlay-content {
+    animation: overlay-scale-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-8px);
+  }
+}
+
+.typing-dot {
+  animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Overlay animations */
+@keyframes overlay-fade-in {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+  }
+}
+
+@keyframes overlay-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes overlay-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Scale in animation for modals - legacy support */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-in {
+  animation: scale-in 0.2s ease-out forwards;
+}
+
+/* Sparkle animation */
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(360deg);
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 0.8s ease-out forwards;
+  color: hsl(var(--primary));
+  font-size: 0.6em;
+  text-shadow: 0 0 8px hsl(var(--primary) / 0.8);
+}
+
+/* Animated border flow */
+@keyframes border-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
+}
+
+.animate-border-flow {
+  animation: border-flow 3s linear infinite;
+}
